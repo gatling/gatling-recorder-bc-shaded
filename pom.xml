@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
+
+    <groupId>io.gatling</groupId>
+    <artifactId>gatling-recorder-bc-shaded</artifactId>
+    <version>1.70-SNAPSHOT</version>
+    <name>gatling-recorder-bc-shaded</name>
+    <description>Shaded BouncyCastle for Gatling Recorder</description>
+
+    <inceptionYear>2022</inceptionYear>
+    <url>https://github.com/bcgit/bc-java</url>
+
+    <developers>
+        <developer>
+            <id>feedback-crypto</id>
+            <name>The Legion of the Bouncy Castle Inc.</name>
+            <email>feedback-crypto@bouncycastle.org</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git:@github.com:gatling/gatling-recorder-bc-shaded.git</connection>
+        <developerConnection>scm:git:git:@github.com:gatling/gatling-recorder-bc-shaded.git</developerConnection>
+        <url>https://github.com/gatling/gatling-recorder-bc-shaded</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Bouncy Castle Licence</name>
+            <url>https://www.bouncycastle.org/licence.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+    <properties>
+        <bc.version>1.70</bc.version>
+
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.10</nexus-staging-maven-plugin.version>
+        <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>false</minimizeJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <createSourcesJar>true</createSourcesJar>
+                            <!--promoteTransitiveDependencies>true</promoteTransitiveDependencies-->
+                            <!--artifactSet>
+                                <includes>
+                                    <include>org.bouncycastle:bcpkix-jdk15on</include>
+                                    <include>org.bouncycastle:bcprov-jdk15on</include>
+                                    <include>org.bouncycastle:bcutil-jdk15on</include>
+                                </includes>
+                            </artifactSet-->
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/versions/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.bouncycastle</pattern>
+                                    <shadedPattern>io.gatling.recorder.internal.bouncycastle</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${nexus-staging-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus-staging</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>${bc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${bc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcutil-jdk15on</artifactId>
+            <version>${bc.version}</version>
+        </dependency>
+    </dependencies>
+</project>
