@@ -68,13 +68,6 @@
                             <shadeSourcesContent>true</shadeSourcesContent>
                             <createSourcesJar>true</createSourcesJar>
                             <!--promoteTransitiveDependencies>true</promoteTransitiveDependencies-->
-                            <!--artifactSet>
-                                <includes>
-                                    <include>org.bouncycastle:bcpkix-jdk15on</include>
-                                    <include>org.bouncycastle:bcprov-jdk15on</include>
-                                    <include>org.bouncycastle:bcutil-jdk15on</include>
-                                </includes>
-                            </artifactSet-->
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -127,6 +120,22 @@
                         <arg>loopback</arg>
                     </gpgArguments>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>javadoc-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>javadoc</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
