@@ -49,6 +49,7 @@
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
     </properties>
 
     <build>
@@ -121,7 +122,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven-jar-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>javadoc-jar</id>
