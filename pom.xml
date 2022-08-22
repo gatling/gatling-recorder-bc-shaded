@@ -9,7 +9,7 @@
 
     <groupId>io.gatling</groupId>
     <artifactId>gatling-recorder-bc-shaded</artifactId>
-    <version>1.72-SNAPSHOT</version>
+    <version>1.71.1-SNAPSHOT</version>
     <name>gatling-recorder-bc-shaded</name>
     <description>Shaded BouncyCastle for Gatling Recorder</description>
 
@@ -44,7 +44,7 @@
         <encoding>UTF-8</encoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <bc.version>1.71</bc.version>
+        <bc.version>1.71.1</bc.version>
 
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
