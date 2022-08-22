@@ -9,7 +9,7 @@
 
     <groupId>io.gatling</groupId>
     <artifactId>gatling-recorder-bc-shaded</artifactId>
-    <version>1.71.1-SNAPSHOT</version>
+    <version>1.71.1</version>
     <name>gatling-recorder-bc-shaded</name>
     <description>Shaded BouncyCastle for Gatling Recorder</description>
 
