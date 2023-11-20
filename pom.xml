@@ -44,7 +44,7 @@
         <encoding>UTF-8</encoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <bc.version>1.76</bc.version>
+        <bc.version>1.77</bc.version>
 
         <maven-shade-plugin.version>3.5.1</maven-shade-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
