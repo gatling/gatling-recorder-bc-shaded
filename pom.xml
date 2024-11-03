@@ -43,7 +43,7 @@
     <properties>
         <encoding>UTF-8</encoding>
         <maven.compiler.release>11</maven.compiler.release>
-        <bc.version>1.78.1</bc.version>
+        <bc.version>1.79</bc.version>
 
         <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
