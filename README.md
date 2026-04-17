@@ -1,1 +1,1 @@
-`mvn deploy`
+Shaded version of bouncy-castle to be used in the Gatling Recorder.
