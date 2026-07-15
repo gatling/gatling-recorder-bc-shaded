@@ -3,7 +3,7 @@
                xsi:schemaLocation="https://github.com/qoomon/maven-git-versioning-extension https://qoomon.github.io/maven-git-versioning-extension/configuration-9.4.0.xsd">
     <refs>
         <ref type="tag">
-            <pattern><![CDATA[v(?<version>\d+\.\d+\.\d+.*)]]></pattern>
+            <pattern><![CDATA[v(?<version>.+)]]></pattern>
             <version>${ref.version}</version>
         </ref>
         <ref type="branch">
