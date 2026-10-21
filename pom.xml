@@ -40,7 +40,7 @@
         <bc.version>1.86</bc.version>
 
         <maven-shade-plugin.version>3.6.2</maven-shade-plugin.version>
-        <central-publishing-maven-plugin.version>0.12.0</central-publishing-maven-plugin.version>
+        <maven-deploy-plugin.version>3.2.0</maven-deploy-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
         <maven-jar-plugin.version>3.5.1</maven-jar-plugin.version>
     </properties>
@@ -85,15 +85,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>${central-publishing-maven-plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <deploymentName>${project.groupId}.${project.artifactId}-${project.version}</deploymentName>
-                    <publishingServerId>central</publishingServerId>
-                    <autoPublish>true</autoPublish>
-                </configuration>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
